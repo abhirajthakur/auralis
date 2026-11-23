@@ -1,0 +1,31 @@
+[workspace]
+resolver = "2"
+members = ["crates/auralis-core", "src-tauri"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Auralis"]
+license = "MIT"
+repository = "https://github.com/auralis-app/auralis"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "multipart", "stream"] }
+async-trait = "0.1"
+base64 = "0.22"
+tracing = "0.1"
+dirs = "6"
+chrono = "0.4"
+parking_lot = "0.12"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"

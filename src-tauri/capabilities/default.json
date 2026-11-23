@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.tauri.app/v2/capabilities",
+  "identifier": "default",
+  "description": "Auralis core capabilities",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:event:default",
+    "core:window:default",
+    "core:window:allow-show",
+    "core:window:allow-hide",
+    "core:window:allow-close",
+    "core:window:allow-minimize",
+    "core:window:allow-maximize",
+    "core:window:allow-set-focus",
+    "core:tray:default",
+    "core:menu:default",
+    "global-shortcut:default",
+    "autostart:default",
+    "clipboard-manager:default",
+    "opener:default"
+  ]
+}

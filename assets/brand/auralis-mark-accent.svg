@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Auralis">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1C1824"/>
+      <stop offset="1" stop-color="#151220"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#C4B5FD"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="bars" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EDE9FE"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tile -->
+  <rect x="16" y="16" width="480" height="480" rx="116" fill="url(#tile)"/>
+  <rect x="16.5" y="16.5" width="479" height="479" rx="115.5" fill="none" stroke="#A78BFA" stroke-opacity="0.18" stroke-width="3"/>
+
+  <!-- The A: two legs -->
+  <g stroke="url(#stroke)" stroke-width="42" stroke-linecap="round" fill="none">
+    <path d="M 256 122 L 156 392"/>
+    <path d="M 256 122 L 356 392"/>
+  </g>
+
+  <!-- Crossbar as a sound wave -->
+  <g fill="url(#bars)">
+    <rect x="202" y="282" width="13" height="40" rx="6.5"/>
+    <rect x="229" y="266" width="13" height="72" rx="6.5"/>
+    <rect x="256" y="248" width="13" height="108" rx="6.5"/>
+    <rect x="283" y="266" width="13" height="72" rx="6.5"/>
+    <rect x="310" y="282" width="13" height="40" rx="6.5"/>
+  </g>
+</svg>

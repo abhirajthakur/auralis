@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Auralis">
+  <!-- Monochrome mark on transparency: for tray templates, print, and
+       anywhere the brand must adapt to its background. -->
+  <g stroke="#F4F2FA" stroke-width="42" stroke-linecap="round" fill="none">
+    <path d="M 256 122 L 156 392"/>
+    <path d="M 256 122 L 356 392"/>
+  </g>
+  <g fill="#F4F2FA">
+    <rect x="202" y="282" width="13" height="40" rx="6.5"/>
+    <rect x="229" y="266" width="13" height="72" rx="6.5"/>
+    <rect x="256" y="248" width="13" height="108" rx="6.5"/>
+    <rect x="283" y="266" width="13" height="72" rx="6.5"/>
+    <rect x="310" y="282" width="13" height="40" rx="6.5"/>
+  </g>
+</svg>
