@@ -5,9 +5,7 @@ members = ["crates/auralis-core", "src-tauri"]
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
-authors = ["Auralis"]
 license = "MIT"
-repository = "https://github.com/auralis-app/auralis"
 
 [workspace.dependencies]
 serde = { version = "1", features = ["derive"] }
