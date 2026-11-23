@@ -1,6 +1,9 @@
 // Tauri IPC commands for Auralis.
+use crate::audio;
+use crate::storage;
 use crate::AppState;
 use auralis_core::config::Settings;
+use cpal::traits::{DeviceTrait, HostTrait};
 use std::path::PathBuf;
 use tauri::State;
 
@@ -24,7 +27,7 @@ pub fn save_settings(state: State<AppState>, settings: Settings) -> Result<(), S
 pub fn list_audio_devices() -> Vec<serde_json::Value> {
     let host = cpal::default_host();
     host.input_devices()
-        .map(|mut devs| {
+        .map(|devs| {
             devs.filter_map(|d| {
                 d.name().ok().map(|name| {
                     serde_json::json!({
@@ -39,7 +42,11 @@ pub fn list_audio_devices() -> Vec<serde_json::Value> {
 
 // --- Recording ---
 #[tauri::command]
-pub async fn start_recording(state: State<'_, AppState>, device: Option<String>) -> Result<(), String> {
+pub async fn start_recording(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    device: Option<String>,
+) -> Result<(), String> {
     let cfg = state.settings.read().audio.clone();
     let device = device.or_else(|| {
         let d = &state.settings.read().audio.device;
@@ -47,7 +54,7 @@ pub async fn start_recording(state: State<'_, AppState>, device: Option<String>)
     });
     let mut rec = state.recorder.write();
     *rec = audio::RecorderHandle::start(
-        state.0.clone(),
+        app,
         device,
         cfg.sample_rate,
         cfg.silence_threshold,
@@ -116,7 +123,7 @@ pub fn list_recordings() -> Vec<RecordingEntry> {
                         path: path.to_string_lossy().to_string(),
                         duration_ms: duration,
                         sample_rate: 16000,
-                        created_at: chrono::DateTime::from(modified)
+                        created_at: chrono::DateTime::<chrono::Utc>::from(modified)
                             .format("%Y-%m-%dT%H:%M:%S").to_string(),
                     })
                 })
@@ -124,5 +131,3 @@ pub fn list_recordings() -> Vec<RecordingEntry> {
         })
         .unwrap_or_default()
 }
-
-mod storage;
